@@ -1,0 +1,938 @@
+bash
+
+PHOTO_B64=$(cat /home/claude/photo_b64.txt)
+
+cat > /mnt/user-data/outputs/vithika-goel-portfolio.html << HTMLEOF
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vithika Goel — Public Administration & Governance</title>
+<meta name="description" content="Vithika Goel — BA (Hons.) Government & Administration student with internship experience at District Collectorate, Divisional Forest Office, and Vidhan Sabha, Lucknow."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#08090f;--bg-2:#0f1019;--bg-3:#151622;--bg-glass:rgba(15,16,25,0.78);
+  --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.13);
+  --text:#eeeef3;--text-2:#9090a8;--text-3:#52526a;
+  --accent:#4f7fff;--accent-2:#82a8ff;--accent-glow:rgba(79,127,255,0.14);
+  --teal:#22d3b0;--teal-dim:rgba(34,211,176,0.11);
+  --gold:#f0b429;--gold-dim:rgba(240,180,41,0.11);
+  --rose:#f06292;--rose-dim:rgba(240,98,146,0.11);
+  --radius:16px;--radius-sm:10px;--radius-xs:6px;
+  --fd:'Sora',sans-serif;--fb:'Inter',sans-serif;
+  --nav-h:66px;--ease:cubic-bezier(0.16,1,0.3,1);
+}
+[data-theme="light"]{
+  --bg:#f8f8fc;--bg-2:#f0f0f7;--bg-3:#e8e8f2;--bg-glass:rgba(248,248,252,0.85);
+  --border:rgba(0,0,0,0.07);--border-2:rgba(0,0,0,0.13);
+  --text:#0a0a18;--text-2:#52526a;--text-3:#9090a8;
+  --accent:#2d5bdb;--accent-2:#4f7fff;--accent-glow:rgba(45,91,219,0.08);
+  --teal:#0faa8c;--teal-dim:rgba(15,170,140,0.09);
+  --gold:#c98a00;--gold-dim:rgba(201,138,0,0.09);
+  --rose:#d84080;--rose-dim:rgba(216,64,128,0.09);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:3px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 44px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);background:var(--bg-glass);border-bottom:1px solid var(--border);transition:all .3s}
+.nav-logo{font-family:var(--fd);font-weight:800;font-size:18px;letter-spacing:-.5px;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:13px;color:var(--text-2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-r{display:flex;align-items:center;gap:10px}
+.btn-theme{background:none;border:1px solid var(--border-2);border-radius:var(--radius-xs);padding:7px 12px;cursor:pointer;color:var(--text-2);font-size:12.5px;font-family:var(--fb);transition:all .2s}
+.btn-theme:hover{color:var(--text);border-color:var(--accent)}
+.btn-cta{background:var(--accent);border:none;border-radius:var(--radius-xs);padding:9px 20px;color:#fff;font-size:13px;font-weight:500;font-family:var(--fb);cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-cta:hover{opacity:.85;transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:1px solid var(--border-2);border-radius:var(--radius-xs);padding:7px 10px;cursor:pointer;color:var(--text-2);font-size:15px}
+.mob-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:var(--bg-glass);backdrop-filter:blur(20px);z-index:90;padding:36px 24px;flex-direction:column;gap:28px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:22px;color:var(--text);text-decoration:none;font-family:var(--fd);font-weight:600}
+
+/* ── LAYOUT ── */
+section{padding:96px 0;position:relative}
+.container{max-width:1100px;margin:0 auto;padding:0 44px}
+.lbl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:18px}
+.lbl::before{content:'';width:18px;height:1.5px;background:var(--accent-2)}
+.h2{font-family:var(--fd);font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-1.5px;color:var(--text);margin-bottom:14px;line-height:1.1}
+.sub{font-size:15.5px;color:var(--text-2);line-height:1.75;max-width:540px}
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fade-up.vis{opacity:1;transform:none}
+
+/* ── ICON SYSTEM ── */
+.ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.ico svg{stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,black 20%,transparent 100%);opacity:.6}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.orb-a{width:480px;height:480px;top:-80px;right:-60px;background:radial-gradient(circle,rgba(79,127,255,.2),transparent 70%)}
+.orb-b{width:380px;height:380px;bottom:40px;left:-80px;background:radial-gradient(circle,rgba(34,211,176,.13),transparent 70%)}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center;position:relative;z-index:2;width:100%}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--accent-glow);border:1px solid rgba(79,127,255,.22);border-radius:100px;padding:6px 16px;font-size:12px;color:var(--accent-2);margin-bottom:26px}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pls 2s infinite}
+@keyframes pls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+h1{font-family:var(--fd);font-size:clamp(42px,5.5vw,70px);font-weight:800;letter-spacing:-2.5px;line-height:1.0;color:var(--text);margin-bottom:6px}
+h1 .grad{background:linear-gradient(120deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-role{font-size:16px;color:var(--text-2);margin-bottom:22px}
+.hero-tag{font-family:var(--fd);font-size:clamp(16px,2vw,22px);font-weight:300;color:var(--text);line-height:1.6;margin-bottom:36px;letter-spacing:-.3px}
+.hero-tag strong{font-weight:600;color:var(--text)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);padding:13px 26px;font-size:14.5px;font-weight:500;font-family:var(--fb);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .25s}
+.btn-p:hover{background:var(--accent-2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(79,127,255,.28)}
+.btn-g{background:transparent;color:var(--text);border:1px solid var(--border-2);border-radius:var(--radius-sm);padding:13px 26px;font-size:14.5px;font-family:var(--fb);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .25s}
+.btn-g:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap}
+.hs{border-left:1px solid var(--border);padding-left:18px}
+.hs:first-child{border-left:none;padding-left:0}
+.hs-n{font-family:var(--fd);font-size:28px;font-weight:700;color:var(--text);letter-spacing:-1px}
+.hs-l{font-size:11.5px;color:var(--text-3);margin-top:2px}
+/* photo */
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.photo-outer{width:320px;height:320px;border-radius:50%;border:1px solid var(--border-2);display:flex;align-items:center;justify-content:center;position:relative}
+.photo-outer::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(79,127,255,.22);animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-inner{width:280px;height:280px;border-radius:50%;overflow:hidden;border:2px solid var(--border-2);position:relative;z-index:2}
+.photo-inner img{width:100%; height:100%; object-fit:cover; object-position:center center;display:block;}
+.fc{position:absolute;background:var(--bg-glass);border:1px solid var(--border-2);border-radius:var(--radius-sm);padding:13px 17px;backdrop-filter:blur(14px)}
+.fc-1{bottom:20px;left:-50px}
+.fc-2{top:30px;right:-44px}
+.fc-lbl{font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.fc-val{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text)}
+.fc-sub{font-size:10.5px;color:var(--teal);margin-top:2px}
+
+/* ── ABOUT ── */
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.story{font-size:15.5px;color:var(--text-2);line-height:1.82;margin-bottom:18px}
+.story strong{color:var(--text);font-weight:500}
+.blockq{border-left:2.5px solid var(--accent);padding:18px 22px;background:var(--accent-glow);border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-top:28px}
+.blockq p{font-family:var(--fd);font-size:17px;font-weight:400;color:var(--text);line-height:1.65;font-style:italic}
+.blockq cite{font-size:11.5px;color:var(--text-3);margin-top:8px;display:block}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+.pcard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:all .3s}
+.pcard:hover{border-color:var(--border-2);transform:translateY(-3px)}
+.picon{width:38px;height:38px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.pi-b{background:var(--accent-glow);color:var(--accent-2)}
+.pi-t{background:var(--teal-dim);color:var(--teal)}
+.pi-g{background:var(--gold-dim);color:var(--gold)}
+.pi-r{background:var(--rose-dim);color:var(--rose)}
+.ptitle{font-family:var(--fd);font-size:13.5px;font-weight:600;margin-bottom:5px}
+.pdesc{font-size:12.5px;color:var(--text-2);line-height:1.6}
+
+/* ── JOURNEY ── */
+#journey{background:var(--bg-2)}
+.tl{position:relative;margin-top:56px}
+.tl::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border-2) 8%,var(--border-2) 92%,transparent)}
+.tl-item{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:40px;position:relative;align-items:start}
+.tl-item.r{direction:rtl}
+.tl-item.r .tc{direction:ltr;text-align:left}
+.tl-dot{position:absolute;left:50%;top:26px;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--accent);border:2.5px solid var(--bg-2);z-index:2}
+.dg{background:var(--gold)}.dt{background:var(--teal)}.dr{background:var(--rose)}
+.tc{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;transition:all .3s}
+.tc:hover{border-color:var(--border-2);transform:translateY(-2px)}
+.tc-yr{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:7px}
+.tc-title{font-family:var(--fd);font-size:16px;font-weight:600;color:var(--text);margin-bottom:3px}
+.tc-org{font-size:12.5px;color:var(--teal);margin-bottom:9px}
+.tc-desc{font-size:13px;color:var(--text-2);line-height:1.65}
+.tc-badge{display:inline-flex;align-items:center;gap:5px;background:var(--gold-dim);color:var(--gold);border-radius:100px;padding:2px 10px;font-size:10.5px;font-weight:600;margin-top:9px}
+.tc-badge.rose{background:var(--rose-dim);color:var(--rose)}
+.tc-badge.teal{background:var(--teal-dim);color:var(--teal)}
+
+/* ── OBJECTIVE ── */
+#objective{background:var(--bg)}
+.obj-inner{background:linear-gradient(135deg,var(--bg-2),rgba(79,127,255,.05));border:1px solid var(--border);border-radius:24px;padding:64px;position:relative;overflow:hidden}
+.obj-inner::before{content:'VISION';position:absolute;right:-10px;bottom:-20px;font-family:var(--fd);font-size:110px;font-weight:800;color:var(--border);letter-spacing:-4px;pointer-events:none;user-select:none}
+.obj-heading{font-family:var(--fd);font-size:clamp(24px,3.5vw,44px);font-weight:700;letter-spacing:-1.5px;color:var(--text);margin-bottom:22px;position:relative;z-index:2}
+.obj-text{font-size:15.5px;color:var(--text-2);line-height:1.85;max-width:700px;position:relative;z-index:2}
+.obj-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;position:relative;z-index:2}
+.op{background:var(--bg-glass);border:1px solid var(--border-2);border-radius:var(--radius);padding:22px;backdrop-filter:blur(10px)}
+.op-n{font-family:var(--fd);font-size:30px;font-weight:800;color:var(--accent);opacity:.35;letter-spacing:-2px;margin-bottom:10px}
+.op-title{font-family:var(--fd);font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
+.op-desc{font-size:12.5px;color:var(--text-2);line-height:1.6}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--bg-2)}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.exp-card{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s;position:relative;overflow:hidden}
+.exp-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;border-radius:2.5px 2.5px 0 0}
+.ec-b::before{background:var(--accent)}.ec-t::before{background:var(--teal)}.ec-g::before{background:var(--gold)}
+.exp-ico-wrap{width:44px;height:44px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.exp-title{font-family:var(--fd);font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:4px}
+.exp-org{font-size:12.5px;color:var(--accent-2);margin-bottom:6px;font-weight:500}
+.exp-dur{font-size:11px;color:var(--text-3);margin-bottom:14px;display:flex;align-items:center;gap:5px}
+.exp-desc{font-size:13px;color:var(--text-2);line-height:1.65}
+.exp-tag{display:inline-flex;align-items:center;gap:5px;margin-top:14px;background:var(--accent-glow);color:var(--accent-2);border-radius:100px;padding:3px 11px;font-size:11px;font-weight:600}
+
+/* ── ACHIEVEMENTS ── */
+#achievements{background:var(--bg)}
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
+.acard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:26px;display:flex;gap:18px;align-items:flex-start;transition:all .3s}
+.acard:hover{border-color:var(--gold);transform:translateY(-2px)}
+.aicon{min-width:46px;height:46px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center}
+.ai-g{background:var(--gold-dim);color:var(--gold)}
+.ai-b{background:var(--accent-glow);color:var(--accent-2)}
+.ai-t{background:var(--teal-dim);color:var(--teal)}
+.ai-r{background:var(--rose-dim);color:var(--rose)}
+.ayr{font-size:10.5px;font-weight:600;color:var(--text-3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.atitle{font-family:var(--fd);font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.abody{font-size:13px;color:var(--text-2);line-height:1.6}
+.cgpa-band{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:20px}
+.cgpa-cell{background:var(--bg-2);padding:24px 28px}
+.cgpa-n{font-family:var(--fd);font-size:32px;font-weight:700;color:var(--text);letter-spacing:-1px}
+.cgpa-t{color:var(--teal)}
+.cgpa-l{font-size:12.5px;color:var(--text-2);margin-top:3px}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg-2)}
+.skills-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.sk{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:all .3s}
+.sk:hover{border-color:var(--border-2);transform:translateY(-3px)}
+.sk.span2{grid-column:span 2}
+.sk-ico{width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.sk-title{font-family:var(--fd);font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px}
+.sk-desc{font-size:13px;color:var(--text-2);line-height:1.65}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{background:var(--bg-2);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:11.5px;color:var(--text-2)}
+.chip.a{background:var(--accent-glow);border-color:rgba(79,127,255,.2);color:var(--accent-2)}
+.chip.t{background:var(--teal-dim);border-color:rgba(34,211,176,.18);color:var(--teal)}
+.plist{margin-top:14px}
+.pi2{margin-bottom:12px}
+.pi2-h{display:flex;justify-content:space-between;margin-bottom:5px}
+.pi2-n{font-size:12.5px;color:var(--text-2)}
+.pi2-p{font-size:11.5px;font-weight:600;color:var(--accent-2)}
+.pi2-bar{height:3.5px;background:var(--border-2);border-radius:100px;overflow:hidden}
+.pi2-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 1.2s ease}
+
+/* ── HOBBIES ── */
+#hobbies{background:var(--bg)}
+.hob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.hcard{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;transition:all .3s}
+.hcard:hover{border-color:var(--border-2);transform:translateY(-3px)}
+.hcard-ico{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.hcard-title{font-family:var(--fd);font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
+.hcard-desc{font-size:12px;color:var(--text-2);line-height:1.6}
+
+/* ── LANGUAGES ── */
+#languages{background:var(--bg-2)}
+.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.lcard{background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;align-items:center;gap:16px;transition:all .3s}
+.lcard:hover{border-color:var(--border-2);transform:translateY(-2px)}
+.lflag-ico{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lname{font-family:var(--fd);font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.llevel{font-size:12px;color:var(--text-2)}
+.ldots{display:inline-flex;gap:4px;margin-top:6px}
+.ld{width:8px;height:8px;border-radius:50%}
+.ld.on{background:var(--accent)}
+.ld.off{background:var(--accent);opacity:.25}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:16px}
+.ci{display:flex;align-items:flex-start;gap:14px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px;transition:all .2s}
+.ci:hover{border-color:var(--border-2)}
+.ci-ico{width:38px;height:38px;border-radius:var(--radius-xs);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-lbl{font-size:10.5px;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.ci-val{font-size:14px;color:var(--text);font-weight:500}
+.ci-val a{color:var(--accent-2);text-decoration:none}
+.ci-val a:hover{text-decoration:underline}
+.cform{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius);padding:32px}
+.cform-title{font-family:var(--fd);font-size:18px;font-weight:600;color:var(--text);margin-bottom:24px}
+.fg{margin-bottom:16px}
+.flbl{font-size:11.5px;font-weight:500;color:var(--text-2);margin-bottom:7px;display:block;text-transform:uppercase;letter-spacing:.05em}
+.finput,.ftarea{width:100%;background:var(--bg-3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;font-size:14px;color:var(--text);font-family:var(--fb);outline:none;transition:border-color .2s;resize:none}
+.finput:focus,.ftarea:focus{border-color:var(--accent)}
+.ftarea{min-height:110px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.btn-sub{width:100%;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);padding:13px;font-size:14.5px;font-weight:500;font-family:var(--fb);cursor:pointer;transition:all .25s;margin-top:6px}
+.btn-sub:hover{background:var(--accent-2);transform:translateY(-1px)}
+.socials{display:flex;gap:10px;margin-top:20px}
+.soc-btn{width:42px;height:42px;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-xs);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text-2);transition:all .2s}
+.soc-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:36px 0}
+.fi{display:flex;justify-content:space-between;align-items:center}
+.fbrand{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--text)}
+.fbrand span{color:var(--accent)}
+.fcopy{font-size:12.5px;color:var(--text-3)}
+.flinks{display:flex;gap:20px}
+.flinks a{font-size:12.5px;color:var(--text-3);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--text-2)}
+
+@media(max-width:880px){
+  .nav-links,.nav-r{display:none}.hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:44px}
+  .hero-photo-wrap{order:-1}
+  .photo-outer{width:220px;height:220px}.photo-inner{width:194px;height:194px}
+  .fc-1,.fc-2{display:none}
+  .about-grid,.tl-item,.contact-grid{grid-template-columns:1fr}
+  .tl-item.r{direction:ltr}
+  .tl::before{left:16px}.tl-dot{left:16px}
+  .tl-item{gap:10px}
+  .obj-pillars{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .ach-grid{grid-template-columns:1fr}
+  .skills-bento{grid-template-columns:1fr}.sk.span2{grid-column:span 1}
+  .hob-grid{grid-template-columns:repeat(2,1fr)}
+  .lang-grid{grid-template-columns:1fr}
+  .fi{flex-direction:column;gap:16px;text-align:center}
+  .frow{grid-template-columns:1fr}
+  .obj-inner{padding:36px 24px}
+  .container{padding:0 20px}
+  .hero-stats{gap:18px}
+  .pillars{grid-template-columns:1fr 1fr}
+  .cgpa-band{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">VG<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#journey">Journey</a>
+    <a href="#experience">Experience</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-r">
+    <button class="btn-theme" onclick="toggleTheme()" id="themeBtn">&#9790; Dark</button>
+    <a href="#contact" class="btn-cta">Connect</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#journey" onclick="toggleMenu()">Journey</a>
+  <a href="#experience" onclick="toggleMenu()">Experience</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="fade-up">
+        <div class="hero-pill">
+          <span class="pulse-dot"></span>
+          Public Administration &middot; Governance &middot; Policy
+        </div>
+        <h1>Vithika<br/><span class="grad">Goel</span></h1>
+        <p class="hero-role">BA (Hons.) Government &amp; Administration &middot; 6th Semester</p>
+        <p class="hero-tag">Committed to <strong>public service</strong> and evidence-based <strong>governance</strong> &mdash; bridging academic insight with on-the-ground experience across India&rsquo;s most vital institutions.</p>
+        <div class="hero-btns">
+          <a href="#experience" class="btn-p">View Experience
+            <svg width="14" height="14" viewBox="0 0 24 24" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#contact" class="btn-g">Get in Touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hs"><div class="hs-n">3</div><div class="hs-l">Govt Offices</div></div>
+          <div class="hs"><div class="hs-n">9.50</div><div class="hs-l">CGPA Sem 1</div></div>
+          <div class="hs"><div class="hs-n">90.2%</div><div class="hs-l">Intermediate</div></div>
+          <div class="hs"><div class="hs-n">7th</div><div class="hs-l">District Rank</div></div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap fade-up" style="transition-delay:.15s">
+        <div class="photo-outer">
+          <div class="photo-inner">
+            <img src="vithika.jpg" alt="Vithika Goel"style="width:280px; height:280px; border-radius:50%; object-fit:cover;display:block;">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-up">
+        <div class="lbl">About Me</div>
+        <h2 class="h2">Analytical. Driven. Built for Public Service.</h2>
+        <p class="story">I am a <strong>BA (Hons.) Government &amp; Administration student</strong> with a strong foundation in public administration, political science, and sociology. My academic journey has been matched by real-world exposure &mdash; interning across three government institutions, from the district level to the state legislature.</p>
+        <p class="story">Raised in <strong>Kukra, Muzaffarnagar, Uttar Pradesh</strong>, I understand firsthand what governance means to ordinary citizens. That conviction drives my commitment to a career in public policy &mdash; where I can contribute meaningfully to national development.</p>
+        <p class="story">My <strong>9.50 CGPA in Semester 1</strong> and government scholarship reflect academic dedication, while my internships at the District Collectorate, Divisional Forest Office, and Vidhan Sabha reflect a commitment to translating knowledge into practice.</p>
+        <div class="blockq">
+          <p>&ldquo;The primary goal is to work within the government sector &mdash; gaining practical experience in policy implementation, administrative procedures, and governance.&rdquo;</p>
+          <cite>&mdash; Vithika Goel, Career Objective</cite>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.1s">
+        <div class="pillars">
+          <div class="pcard">
+            <div class="picon pi-b">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="ptitle">Mission</div>
+            <div class="pdesc">Contribute to public policy and governance that directly improves citizens&rsquo; lives across India.</div>
+          </div>
+          <div class="pcard">
+            <div class="picon pi-t">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="ptitle">Approach</div>
+            <div class="pdesc">Meticulous observation, structured record-keeping, and willingness to learn from every interaction.</div>
+          </div>
+          <div class="pcard">
+            <div class="picon pi-g">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="ptitle">Foundation</div>
+            <div class="pdesc">Strong academic base in public administration, political science, and sociology.</div>
+          </div>
+          <div class="pcard">
+            <div class="picon pi-r">
+              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="ptitle">Character</div>
+            <div class="pdesc">Courteous, punctual, team-oriented, and enthusiastic under all circumstances.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="container">
+    <div class="lbl">Timeline</div>
+    <h2 class="h2">Education &amp; Career Journey</h2>
+    <p class="sub">From school topper to state legislature intern &mdash; every step has been purposeful.</p>
+    <div class="tl fade-up">
+
+      <div class="tl-item">
+        <div class="tc">
+          <div class="tc-yr">Until 2020</div>
+          <div class="tc-title">High School</div>
+          <div class="tc-org">UP Board &middot; Muzaffarnagar</div>
+          <div class="tc-desc">Completed high school with 81.83%, building a strong foundation in core academics and developing early interest in social sciences and governance.</div>
+        </div>
+        <div></div><div class="tl-dot"></div>
+      </div>
+
+      <div class="tl-item r">
+        <div class="tc">
+          <div class="tc-yr">Intermediate</div>
+          <div class="tc-title">UP Board Intermediate</div>
+          <div class="tc-org">UP Board &middot; Muzaffarnagar</div>
+          <div class="tc-desc">Achieved 90.20% &mdash; securing the 7th rank in the entire Muzaffarnagar district. This performance directly earned a 100% tuition scholarship from the college.</div>
+          <div class="tc-badge">
+            <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            7th District Rank
+          </div>
+        </div>
+        <div></div><div class="tl-dot dg"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tc">
+          <div class="tc-yr">2022 &ndash; Present</div>
+          <div class="tc-title">BA (Hons.) Government &amp; Administration</div>
+          <div class="tc-org">6th Semester (Final Year)</div>
+          <div class="tc-desc">Specialising in public administration, political science, and sociology. Secured 9.50 CGPA in Sem 1 and 9.60 CGPA in Sem 2. Awarded government scholarship for excellence in college grades.</div>
+          <div class="tc-badge teal">
+            <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            9.6 CGPA &middot; Govt Scholarship
+          </div>
+        </div>
+        <div></div><div class="tl-dot dt"></div>
+      </div>
+
+      <div class="tl-item r">
+        <div class="tc">
+          <div class="tc-yr">Jan 2024</div>
+          <div class="tc-title">Intern &mdash; District Collectorate</div>
+          <div class="tc-org">Meerut, Uttar Pradesh</div>
+          <div class="tc-desc">First hands-on exposure to district-level administration. Observed functioning of the collectorate and maintained daily report diaries documenting work and lessons learned.</div>
+          <div class="tc-badge rose">
+            <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Administrative Experience
+          </div>
+        </div>
+        <div></div><div class="tl-dot dr"></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tc">
+          <div class="tc-yr">Jun &ndash; Jul 2024</div>
+          <div class="tc-title">Intern &mdash; Divisional Forest Office</div>
+          <div class="tc-org">Meerut, Uttar Pradesh</div>
+          <div class="tc-desc">Gained understanding of forest administration and the Meerut Forest Division&rsquo;s operations. Prepared detailed daily report diaries on all observed institutional processes.</div>
+        </div>
+        <div></div><div class="tl-dot dt"></div>
+      </div>
+
+      <div class="tl-item r">
+        <div class="tc">
+          <div class="tc-yr">Jun &ndash; Aug 2025</div>
+          <div class="tc-title">Intern &mdash; Vidhan Sabha</div>
+          <div class="tc-org">State Legislature, Lucknow, UP</div>
+          <div class="tc-desc">Most prestigious internship &mdash; gaining direct understanding of the Legislative Assembly of Uttar Pradesh. Documented legislative processes, committee meetings, and state governance workflows.</div>
+          <div class="tc-badge">
+            <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            State Legislature
+          </div>
+        </div>
+        <div></div><div class="tl-dot dg"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIVE -->
+<section id="objective">
+  <div class="container">
+    <div class="obj-inner fade-up">
+      <div class="lbl">Career Objective</div>
+      <div class="obj-heading">Working Toward a Career<br/>in Governance &amp; Policy</div>
+      <p class="obj-text">The primary goal is to work with or under the government sector &mdash; gaining practical experience in policy implementation, administrative procedures, and governance. This includes contributing to public service by working on initiatives that benefit society and address public issues, while building skills in policy analysis, project management, and communication. Understanding the functioning of government departments fosters civic awareness and a sense of responsibility toward contributing to national development.</p>
+      <div class="obj-pillars">
+        <div class="op"><div class="op-n">01</div><div class="op-title">Policy Implementation</div><div class="op-desc">Gain deep expertise in how policies move from paper to ground-level reality.</div></div>
+        <div class="op"><div class="op-n">02</div><div class="op-title">Administrative Mastery</div><div class="op-desc">Build fluency in government procedures, record management, and inter-departmental coordination.</div></div>
+        <div class="op"><div class="op-n">03</div><div class="op-title">Public Impact</div><div class="op-desc">Work on initiatives that address real public issues and deliver measurable outcomes for citizens.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="lbl">Internship Experience</div>
+    <h2 class="h2">Government Offices &middot; On the Ground</h2>
+    <p class="sub">Three government internships across district, forest, and legislative administration &mdash; all within Uttar Pradesh.</p>
+    <div class="exp-grid fade-up">
+      <div class="exp-card ec-b">
+        <div class="exp-ico-wrap pi-b">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="exp-title">District Collectorate</div>
+        <div class="exp-org">Meerut, Uttar Pradesh</div>
+        <div class="exp-dur">
+          <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          January 1 &ndash; January 15, 2024
+        </div>
+        <div class="exp-desc">Observed the day-to-day functioning of district administration &mdash; one of India&rsquo;s most critical governance layers. Understood how a collectorate coordinates revenue, law enforcement, welfare, and development. Documented all observations through structured daily report diaries.</div>
+        <span class="exp-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          District Administration
+        </span>
+      </div>
+      <div class="exp-card ec-t">
+        <div class="exp-ico-wrap pi-t">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="exp-title">Divisional Forest Office</div>
+        <div class="exp-org">Meerut, Uttar Pradesh</div>
+        <div class="exp-dur">
+          <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          June 1 &ndash; July 22, 2024
+        </div>
+        <div class="exp-desc">Gained a comprehensive understanding of the Meerut Forest Division &mdash; its mandate, operational structure, and day-to-day administration. Strengthened skills in observation, record-keeping, and organisational learning in a government forest office context.</div>
+        <span class="exp-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Forest Administration
+        </span>
+      </div>
+      <div class="exp-card ec-g">
+        <div class="exp-ico-wrap pi-g">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div class="exp-title">Vidhan Sabha &mdash; State Legislature</div>
+        <div class="exp-org">Lucknow, Uttar Pradesh</div>
+        <div class="exp-dur">
+          <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          June 1 &ndash; August 2025
+        </div>
+        <div class="exp-desc">Most advanced internship &mdash; at the Legislative Assembly of Uttar Pradesh. Gained understanding of legislative functioning, procedures, debates, and governance structures at state level. Prepared detailed daily report diaries on legislative processes and committee meetings.</div>
+        <span class="exp-tag">
+          <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Legislative Assembly
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="lbl">Recognition</div>
+    <h2 class="h2">Achievements &amp; Academic Excellence</h2>
+    <p class="sub">Recognition earned through consistent performance, civic commitment, and dedication to learning.</p>
+    <div class="ach-grid fade-up">
+      <div class="acard">
+        <div class="aicon ai-g">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <div>
+          <div class="ayr">Intermediate &middot; UP Board</div>
+          <div class="atitle">7th Rank in District &mdash; UP Board Intermediate</div>
+          <div class="abody">Secured the 7th rank in the entire Muzaffarnagar district in UP Board Intermediate examinations with 90.20% &mdash; a result that earned national-level academic recognition.</div>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="aicon ai-b">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div>
+          <div class="ayr">College &middot; Scholarship</div>
+          <div class="atitle">100% Full Tuition Scholarship</div>
+          <div class="abody">Awarded a 100% scholarship covering the full tuition fee of the undergraduate programme by the college &mdash; based entirely on academic merit and Intermediate performance.</div>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="aicon ai-t">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="ayr">Government &middot; Scholarship</div>
+          <div class="atitle">Government Scholarship for Academic Excellence</div>
+          <div class="abody">Received a government scholarship awarded specifically for excellence in college grades and performance &mdash; recognising sustained academic achievement throughout the programme.</div>
+        </div>
+      </div>
+      <div class="acard">
+        <div class="aicon ai-r">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="ayr">Academic &middot; GPA</div>
+          <div class="atitle">9.50 &amp; 9.60 CGPA &mdash; Semesters 1 &amp; 2</div>
+          <div class="abody">Scored 9.50 CGPA in the first semester and 9.60 CGPA in the second semester &mdash; demonstrating consistent academic excellence in Government &amp; Administration.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cgpa-band fade-up">
+      <div class="cgpa-cell">
+        <div class="cgpa-n">9.50 <span class="cgpa-t">CGPA</span></div>
+        <div class="cgpa-l">Semester 1 &middot; BA (Hons.) G&amp;A</div>
+      </div>
+      <div class="cgpa-cell">
+        <div class="cgpa-n">9.60 <span class="cgpa-t">CGPA</span></div>
+        <div class="cgpa-l">Semester 2 &middot; BA (Hons.) G&amp;A</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="lbl">Skills &amp; Competencies</div>
+    <h2 class="h2">What I Bring to the Table</h2>
+    <p class="sub">A well-rounded set of professional, digital, and interpersonal skills developed through academics and government internships.</p>
+    <div class="skills-bento fade-up">
+
+      <div class="sk span2">
+        <div class="sk-ico pi-b">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="sk-title">Digital &amp; Office Skills</div>
+        <div class="sk-desc">Proficient in Microsoft Office Suite &mdash; Word, Excel, and Google Docs &mdash; for drafting reports, maintaining records, and producing documentation for government use. Comfortable with digital report preparation and file management.</div>
+        <div class="chips">
+          <span class="chip a">Microsoft Word</span>
+          <span class="chip a">Microsoft Excel</span>
+          <span class="chip a">Google Docs</span>
+          <span class="chip">Report Writing</span>
+          <span class="chip">Documentation</span>
+          <span class="chip">Record Keeping</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <div class="sk-ico pi-t">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="sk-title">Communication</div>
+        <div class="sk-desc">Active listening, clear verbal and written communication. Able to take concise and effective notes during meetings.</div>
+        <div class="plist">
+          <div class="pi2"><div class="pi2-h"><span class="pi2-n">Listening</span><span class="pi2-p">95%</span></div><div class="pi2-bar"><div class="pi2-fill" style="width:95%"></div></div></div>
+          <div class="pi2"><div class="pi2-h"><span class="pi2-n">Written Communication</span><span class="pi2-p">90%</span></div><div class="pi2-bar"><div class="pi2-fill" style="width:90%"></div></div></div>
+          <div class="pi2"><div class="pi2-h"><span class="pi2-n">Public Speaking</span><span class="pi2-p">82%</span></div><div class="pi2-bar"><div class="pi2-fill" style="width:82%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="sk">
+        <div class="sk-ico pi-g">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="sk-title">Professional Traits</div>
+        <div class="sk-desc">Punctual, courteous, and respectful in all professional settings. Maintains deadlines and brings a calm, positive attitude.</div>
+        <div class="chips">
+          <span class="chip t">Punctuality</span>
+          <span class="chip t">Deadline-Driven</span>
+          <span class="chip t">Office Etiquette</span>
+          <span class="chip t">Positive Attitude</span>
+        </div>
+      </div>
+
+      <div class="sk">
+        <div class="sk-ico pi-r">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="sk-title">Observation &amp; Research</div>
+        <div class="sk-desc">Strong ability to learn by observing tasks and processes. Skilled at researching governance topics and analysing data for structured reports.</div>
+      </div>
+
+      <div class="sk">
+        <div class="sk-ico pi-b">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="sk-title">Organisation</div>
+        <div class="sk-desc">Keeps documents and schedules well-organised. Experienced in maintaining detailed records of daily activities across all three government internships.</div>
+      </div>
+
+      <div class="sk">
+        <div class="sk-ico pi-t">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="sk-title">Teamwork</div>
+        <div class="sk-desc">Works collaboratively and efficiently with peers and senior staff. Brings curiosity, eagerness to learn, and a constructive attitude to every team environment.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="container">
+    <div class="lbl">Beyond the Resume</div>
+    <h2 class="h2">Hobbies &amp; Interests</h2>
+    <p class="sub">Passions that shape perspective and fuel a deeper understanding of governance, society, and the world.</p>
+    <div class="hob-grid fade-up">
+      <div class="hcard">
+        <div class="hcard-ico pi-b">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="hcard-title">Reading</div>
+        <div class="hcard-desc">Newspapers, government publications, and books on public administration &mdash; staying informed on policy and governance.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-t">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <div class="hcard-title">Writing</div>
+        <div class="hcard-desc">Journals, essays, and blogs on social and administrative topics &mdash; translating observations into structured analysis.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-g">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="hcard-title">Volunteering</div>
+        <div class="hcard-desc">Community service and NGO work to understand public service and contribute to social causes.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-r">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="hcard-title">Research</div>
+        <div class="hcard-desc">Researching governance structures and analysing data for reports &mdash; bridging academia and practical policy work.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-b">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="hcard-title">Cultures &amp; Travel</div>
+        <div class="hcard-desc">Exploring different cultures and governance structures &mdash; building a broader worldview that informs policy thinking.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-t">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4m0-6h6m0 0v6m0-6h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4m-6 0a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2m0 6a2 2 0 0 1-2-2"/></svg>
+        </div>
+        <div class="hcard-title">Critical Thinking</div>
+        <div class="hcard-desc">Solving puzzles, strategy games, and group discussions &mdash; sharpening logical reasoning and decision-making.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-g">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="hcard-title">Event Management</div>
+        <div class="hcard-desc">Managing events and campaigns &mdash; developing coordination, planning, and communication skills in real settings.</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-ico pi-r">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <div class="hcard-title">Public Speaking</div>
+        <div class="hcard-desc">Engaging in debates and discussions on social and political topics &mdash; building confidence to articulate ideas publicly.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="container">
+    <div class="lbl">Languages Known</div>
+    <h2 class="h2">Multilingual Communication</h2>
+    <p class="sub">Fluent in languages that connect with India&rsquo;s diverse administrative and social landscape.</p>
+    <div class="lang-grid fade-up">
+      <div class="lcard">
+        <div class="lflag-ico pi-b">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l2 2 4-4"/><rect x="2" y="3" width="9" height="9" rx="1"/><path d="M13 3h8"/><path d="M13 7h8"/><path d="M13 11h8"/><path d="M4 17l2 2 4-4"/><rect x="2" y="14" width="9" height="9" rx="1"/><path d="M13 14h8"/><path d="M13 18h8"/><path d="M13 22h8"/></svg>
+        </div>
+        <div>
+          <div class="lname">Hindi</div>
+          <div class="llevel">Proficient &mdash; Native Language</div>
+          <div class="ldots"><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span></div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="lflag-ico pi-t">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <div class="lname">English</div>
+          <div class="llevel">Proficient &mdash; Academic &amp; Professional</div>
+          <div class="ldots"><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span></div>
+        </div>
+      </div>
+      <div class="lcard">
+        <div class="lflag-ico pi-g">
+          <svg width="22" height="22" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="lname">German</div>
+          <div class="llevel">Currently Learning</div>
+          <div class="ldots"><span class="ld on"></span><span class="ld on"></span><span class="ld off"></span><span class="ld off"></span><span class="ld off"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="lbl">Get in Touch</div>
+    <h2 class="h2">Let&rsquo;s Connect</h2>
+    <p class="sub">Open to internship opportunities, government roles, academic collaborations, and mentorship conversations.</p>
+    <div class="contact-grid fade-up">
+      <div>
+        <div class="cinfo">
+          <div class="ci">
+            <div class="ci-ico pi-b"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="ci-lbl">Phone</div><div class="ci-val"><a href="tel:8630651459">8630651459</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico pi-t"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:vithikagoel01@gmail.com">vithikagoel01@gmail.com</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico pi-b"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div><div class="ci-lbl">LinkedIn</div><div class="ci-val"><a href="https://linkedin.com/in/vithikagoel" target="_blank">linkedin.com/in/vithikagoel</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico pi-g"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="ci-lbl">Location</div><div class="ci-val">Amit Vihar, Kukra, Muzaffarnagar, UP</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-ico pi-r"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <div><div class="ci-lbl">Status</div><div class="ci-val">6th Semester &middot; Open to Government Roles</div></div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://linkedin.com/in/vithikagoel" target="_blank" class="soc-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:vithikagoel01@gmail.com" class="soc-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="tel:8630651459" class="soc-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="cform">
+        <div class="cform-title">Send a Message</div>
+        <div class="frow">
+          <div class="fg"><label class="flbl">Your Name</label><input class="finput" type="text" placeholder="Full name"/></div>
+          <div class="fg"><label class="flbl">Organisation</label><input class="finput" type="text" placeholder="Dept / Institution"/></div>
+        </div>
+        <div class="fg"><label class="flbl">Email</label><input class="finput" type="email" placeholder="your@email.com"/></div>
+        <div class="fg"><label class="flbl">Purpose</label><input class="finput" type="text" placeholder="Internship / Govt Role / Mentorship / Other"/></div>
+        <div class="fg"><label class="flbl">Message</label><textarea class="ftarea" placeholder="Tell me about the opportunity or what you'd like to discuss..."></textarea></div>
+        <button class="btn-sub" id="submitBtn">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fi">
+      <div class="fbrand">VG<span>.</span> &middot; Vithika Goel</div>
+      <div class="fcopy">&copy; 2025 Vithika Goel &middot; Muzaffarnagar, Uttar Pradesh</div>
+      <div class="flinks">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){
+  var h=document.documentElement,b=document.getElementById('themeBtn');
+  if(h.dataset.theme==='dark'){h.dataset.theme='light';b.textContent='\u2600 Light'}
+  else{h.dataset.theme='dark';b.textContent='\u263E Dark'}
+}
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      e.target.querySelectorAll('.pi2-fill').forEach(function(b){
+        var w=b.style.width;b.style.width='0';
+        setTimeout(function(){b.style.width=w},120);
+      });
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
+window.addEventListener('scroll',function(){
+  document.querySelector('nav').style.borderBottomColor=window.scrollY>40?'var(--border-2)':'var(--border)';
+});
+document.getElementById('submitBtn').addEventListener('click',function(e){
+  e.preventDefault();
+  this.textContent='Message Sent \u2713';
+  this.style.background='var(--teal)';
+  var btn=this;
+  setTimeout(function(){btn.textContent='Send Message';btn.style.background=''},3000);
+});
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Done: $(wc -c < /mnt/user-data/outputs/vithika-goel-portfolio.html) bytes"
+Done
