@@ -127,11 +127,16 @@ nav{width:100%;max-width:var(--w);margin:0 auto;padding:0 clamp(16px,4vw,40px);
   z-index:-2;
   overflow:hidden;
 }
+.hero-visual picture,
 .hero-visual img{
   width:100%;
   height:100%;
-  object-fit:contain;
-  object-position: center;
+  display:block;
+}
+
+.hero-visual img{
+  object-fit:cover;
+  object-position:center center;
 }
 .hbg{
   position:absolute;
@@ -218,13 +223,21 @@ nav{width:100%;max-width:var(--w);margin:0 auto;padding:0 clamp(16px,4vw,40px);
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
 @media(max-width:768px){
-  .hero{justify-content:center;padding:calc(var(--nav) + 4rem) clamp(16px,4vw,24px) 4rem}
-  .hover{max-width:100%}
+  .hero{min-height:100vh;align-items:flex-start;justify-content:flex-start;padding:calc(var(--nav) + 4rem) clamp(16px,4vw,24px) 4rem}
+  .hero-visual img{object-fit:cover;object-position:center center;min-height:100%}
+  .hover{position:relative;z-index:2;max-width:100%;margin:0;padding:0 20px}
+  .hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;max-width:100%}
+  .hero-sub{font-size:1rem;line-height:1.8;max-width:min(80vw,22rem);margin:1.2rem 0 0}
+  .hact{justify-content:flex-start;gap:.85rem;flex-wrap:wrap}
+  .hact .btn{padding:.72rem 1.4rem;font-size:.82rem;white-space:normal;min-width:160px}
   .scue{left:50%;transform:translateX(-50%)}
 }
 @media(max-width:560px){
-  .hero{padding:calc(var(--nav) + 3rem) 1rem 3rem}
-  .hstats{gap:1rem}
+  .hero{padding:calc(var(--nav) + 3.5rem) 1rem 3rem}
+  .hstats{gap:1rem;justify-content:space-between}
+  .hst{flex:1 1 48%;min-width:130px}
+  .hact{flex-direction:column;align-items:stretch}
+  .hact .btn{width:100%;justify-content:center}
 }
 
 /* ── SECTION DEFAULTS ────────────────────── */
@@ -528,8 +541,11 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:clamp(2.5r
 <!-- HERO -->
 <section class="hero" id="home" aria-label="Hero">
   <div class="hero-visual">
-  <img src="hero back.jpeg" alt="Traffic Management System">
-  </div>
+  <picture>
+    <source media="(max-width:768px)" srcset="hero-mobile.jpeg">
+    <img src="hero back.jpeg" alt="Traffic Management System">
+  </picture>
+</div>
   <div class="hbg" aria-hidden="true"></div>
   <div class="hdg" aria-hidden="true"></div>
   <div class="hover">
