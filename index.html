@@ -61,7 +61,7 @@ img{max-width:100%;display:block}
 .gt{
   background:linear-gradient(
     90deg,
-    #cfd6fb,
+    #7780a9,
     #FFFFFF
   );
   -webkit-background-clip:text;
@@ -173,11 +173,17 @@ nav{width:100%;max-width:var(--w);margin:0 auto;padding:0 clamp(16px,4vw,40px);
 }
 
 .hbadge{display:inline-flex;align-items:center;gap:.8rem;
-  background:rgba(248,183,200,.12);border:1px solid rgba(248, 183, 200, 0);
+  background:rgba(237, 244, 245, 0.881);border:1px solid rgba(248, 183, 200, 0);
   padding:.45rem 1.2rem;
-  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a6f6ff;
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#000000;;
   opacity:0;animation:fu .8s .2s forwards}
-.hdot{width:8px;height:8px;background:#a0e3f2;border-radius:50%;flex-shrink:0}
+.hdot{
+  width:8px;
+  height:8px;
+  background:#38BDF8;
+  border-radius:50%;
+  flex-shrink:0;
+}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 .hero h1{
@@ -208,11 +214,26 @@ nav{width:100%;max-width:var(--w);margin:0 auto;padding:0 clamp(16px,4vw,40px);
 
 .hact{display:flex;gap:1rem;justify-content:flex-start;flex-wrap:wrap;
   opacity:0;animation:fu .9s .8s forwards}
-.hero .btn-g{background:#f8b7c8;color:#050714;box-shadow:0 0 28px rgba(248,183,200,.22)}
-.hero .btn-g:hover{transform:translateY(-1px);box-shadow:0 0 36px rgba(248,183,200,.24)}
-.hero .btn-o{color:#fff;border-color:rgba(248,183,200,.35)}
-.hero .btn-o:hover{border-color:#f8b7c8;color:#f8b7c8}
+.hero .btn-g{
+  background:#38BDF8;
+  color:#050714;
+  box-shadow:0 0 28px rgba(56,189,248,.25);
+}
 
+.hero .btn-g:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 36px rgba(56,189,248,.35);
+}
+
+.hero .btn-o{
+  color:#fff;
+  border-color:rgba(56,189,248,.35);
+}
+
+.hero .btn-o:hover{
+  border-color:#38BDF8;
+  color:#38BDF8;
+}
 .scue{position:absolute;bottom:2.2rem;left:clamp(28px,4vw,40px);transform:none;
   display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;
   opacity:.45;z-index:1;animation:bob 2.5s ease-in-out infinite}
@@ -316,12 +337,19 @@ section{padding:clamp(4rem,8vw,7rem) 0}
   position:relative;overflow:hidden;
   background:var(--panel);
   border:1px solid var(--line);
-  transition:transform .4s ease,border-color .4s;
+  transition:transform .4s ease,border-color .4s,box-shadow .4s ease;
+  box-shadow:0 0 0 rgba(0,0,0,0);
 }
 .pcard:hover{transform:translateY(-6px)}
-.pcard.p1{border-top:3px solid var(--lime)}
+.pcard.p1{
+  border-top:3px solid #8B5CF6;
+  box-shadow:0 4px 20px rgba(139,92,246,.12);
+}
+.pcard.p1:hover{
+  border-color:#8B5CF6;
+  box-shadow:0 8px 32px rgba(139,92,246,.18);
+}
 .pcard.p2{border-top:3px solid var(--indigo)}
-.pcard:hover.p1{border-color:rgba(200,241,53,.5)}
 .pcard:hover.p2{border-color:rgba(99,102,241,.5)}
 
 /* Large photo strip at top */
@@ -345,7 +373,7 @@ section{padding:clamp(4rem,8vw,7rem) 0}
   position:absolute;inset:0;
   transition:.4s;
 }
-.p1 .pc-overlay{background:linear-gradient(180deg,transparent 40%,rgba(200,241,53,.25) 100%)}
+.p1 .pc-overlay{background:linear-gradient(180deg,transparent 40%,rgba(139,92,246,.2) 100%)}
 .p2 .pc-overlay{background:linear-gradient(180deg,transparent 40%,rgba(99,102,241,.28) 100%)}
 
 /* Role badge floating on photo */
@@ -355,7 +383,7 @@ section{padding:clamp(4rem,8vw,7rem) 0}
   font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   backdrop-filter:blur(12px);
 }
-.p1 .pc-rolebadge{background:rgba(200,241,53,.18);border:1px solid rgba(146, 98, 192, 0.475);color:var(--lime)}
+.p1 .pc-rolebadge{background:rgba(139,92,246,.15);border:1px solid #8B5CF6;color:#A78BFA;backdrop-filter:blur(12px)}
 .p2 .pc-rolebadge{background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.4);color:#A5B4FC}
 
 /* Glow radial on hover */
@@ -364,13 +392,14 @@ section{padding:clamp(4rem,8vw,7rem) 0}
   background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,241,53,.06) 0%,transparent 55%);
   opacity:0;transition:opacity .4s;z-index:0;
 }
+.p1 .pc-glow{background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(139,92,246,.1) 0%,transparent 55%)}
 .p2 .pc-glow{background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(99,102,241,.08) 0%,transparent 55%)}
 .pcard:hover .pc-glow{opacity:1}
 
 /* Card body */
 .pc-body{padding:clamp(1.2rem,3vw,2rem);position:relative;z-index:1}
 .pc-name{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;letter-spacing:-.02em;margin-bottom:.15rem}
-.p1 .pc-name{background:linear-gradient(90deg,#fff,var(--lime));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.p1 .pc-name{background:linear-gradient(90deg,#F8FAFC,#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .p2 .pc-name{background:linear-gradient(90deg,#fff,#A5B4FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 .pc-company{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;display:block}
@@ -383,14 +412,14 @@ section{padding:clamp(4rem,8vw,7rem) 0}
   font-size:.83rem;color:var(--dim);text-decoration:none;transition:.25s;
 }
 .pci:last-child{border-bottom:none}
-.p1 .pci:hover{color:var(--lime)}
+.p1 .pci:hover{color:#A78BFA}
 .p2 .pci:hover{color:#A5B4FC}
 .pci-ic{
   width:30px;height:30px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   font-size:.75rem;border:1px solid var(--line);transition:.25s;
 }
-.p1 .pci:hover .pci-ic{border-color:var(--lime);background:var(--lime-dim)}
+.p1 .pci:hover .pci-ic{border-color:#8B5CF6;background:rgba(139,92,246,.15)}
 .p2 .pci:hover .pci-ic{border-color:#818CF8;background:rgba(99,102,241,.12)}
 
 /* Portfolio CTA */
@@ -401,8 +430,8 @@ section{padding:clamp(4rem,8vw,7rem) 0}
   font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   transition:.3s;position:relative;z-index:1;
 }
-.p1 .pc-cta{background:var(--lime);color:#050714}
-.p1 .pc-cta:hover{background:#bf67f2;transform:translateX(3px)}
+.p1 .pc-cta{background:#8B5CF6;color:#F8FAFC;box-shadow:0 4px 16px rgba(139,92,246,.25)}
+.p1 .pc-cta:hover{background:#A78BFA;transform:translateX(3px);box-shadow:0 6px 24px rgba(139,92,246,.35)}
 .p2 .pc-cta{background:var(--indigo);color:#fff}
 .p2 .pc-cta:hover{background:#4F46E5;transform:translateX(3px)}
 .pc-cta-ghost{
@@ -572,8 +601,8 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:clamp(2.5r
 <section class="vis" id="vision" aria-labelledby="vis-h">
 <div class="wrap">
   <div class="vis-head rv">
-    <div class="lbl">The Problem We Solve</div><br/>
-    <h2 id="vis-h">Transforming Chaos into <span class="gt">Order</span></h2>
+    <div class="lbl"> Smarter Traffic. Faster Response.</div><br/>
+    <h2 id="vis-h">AI-driven grid optimization and <span class="gt">automated emergency routing.</span></h2>
     <p>See the real difference intelligent infrastructure makes — for every driver, every day.</p>
   </div>
   <div class="vc rv1">
@@ -750,9 +779,9 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding:clamp(2.5r
       <div class="dcs">
         <a href="mailto:admin@vizolane.com" class="dc"><span class="dc-ic">✉</span><div><span class="dc-sub">General Enquiries</span>admin@vizolane.com</div></a>
         <a href="mailto:piyush.goel@vizolane.com" class="dc"><span class="dc-ic">✉</span><div><span class="dc-sub">Piyush Goel — Director</span>piyush.goel@vizolane.com</div></a>
-        <a href="mailto:nipun.tyagi@vizolane.com" class="dc"><span class="dc-ic">✉</span><div><span class="dc-sub">Nipun Tyagi — Director</span>nipun.tyagi@vizolane.com</div></a>
+        <a href="mailto:vithikagoel01@gmail.com" class="dc"><span class="dc-ic">✉</span><div><span class="dc-sub">Vithika Goel — Director</span>vithikagoel01@gmail.com</div></a>
         <a href="tel:+919389860044" class="dc"><span class="dc-ic">📞</span><div><span class="dc-sub">Piyush Goel</span>+91 93898 60044</div></a>
-        <a href="tel:+918532070669" class="dc"><span class="dc-ic">📞</span><div><span class="dc-sub">Nipun Tyagi</span>+91 85320 70669</div></a>
+        <a href="tel:+918532070669" class="dc"><span class="dc-ic">📞</span><div><span class="dc-sub">Vithika Goel</span>+91 8630651459</div></a>
       </div>
     </div>
     <div class="rv1">

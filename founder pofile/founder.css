@@ -380,8 +380,8 @@ button { font: inherit; border: none; cursor: pointer; }
 /* ── FLOATING CARDS ──────────────────────────────────────────────────────── */
 .float-card {
   position: absolute;
-  background: rgba(12,18,32,.8);
-  border: 1px solid rgba(124,58,237,.25);
+  background: rgba(9, 17, 36, 0.8);
+  border: 1px solid rgba(140, 97, 213, 0.25);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 14px;
