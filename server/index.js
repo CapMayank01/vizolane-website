@@ -146,7 +146,7 @@ app.use((_req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// ── Start server ─────────────────────────────────────────
+// ── Start server (Local Dev) ───────────────────────────────
 
 async function start() {
   console.log("\n🚀 Starting Vizolane Contact Backend...\n");
@@ -161,4 +161,10 @@ async function start() {
   });
 }
 
-start();
+// Start only if run directly (not imported by Vercel)
+if (require.main === module) {
+  start();
+}
+
+// Export for Vercel Serverless
+module.exports = app;
