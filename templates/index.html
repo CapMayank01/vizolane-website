@@ -449,7 +449,7 @@
       inset: 0;
       z-index: -1;
 
-      background: url('hero back.jpeg') no-repeat center center;
+      background: url('/static/images/hero_back.jpeg') no-repeat center center;
 
       background-size: contain;
 
@@ -1801,8 +1801,8 @@
   <section class="hero" id="home" aria-label="Hero">
     <div class="hero-visual">
       <picture>
-        <source media="(max-width:768px)" srcset="hero-mobile.jpeg">
-        <img src="hero back.jpeg" alt="Traffic Management System">
+        <source media="(max-width:768px)" srcset="/static/images/hero_mobile.jpeg">
+        <img src="/static/images/hero_back.jpeg" alt="Traffic Management System">
       </picture>
     </div>
     <div class="hbg" aria-hidden="true"></div>
@@ -2066,7 +2066,7 @@
               <a href="mailto:admin@vizolane.com" class="pci" aria-label="Admin email"><span
                   class="pci-ic">✉</span>admin@vizolane.com</a>
             </div>
-            <a href="founder pofile/founder.html" target="_blank" rel="noopener" class="pc-cta">View Portfolio →</a>
+            <a href="/founder" target="_blank" rel="noopener" class="pc-cta">View Portfolio →</a>
           </div>
         </div>
 
@@ -2074,7 +2074,7 @@
         <div class="pcard p2 rv1" id="pc2">
           <div class="pc-glow" aria-hidden="true"></div>
           <div class="pc-imgwrap">
-            <img src="vithika.jpg" alt="Vithika Goel — Co-Founder & Director" loading="lazy" />
+            <img src="/static/images/vithika.jpg" alt="Vithika Goel — Co-Founder & Director" loading="lazy" />
             <div class="pc-overlay" aria-hidden="true"></div>
             <span class="pc-rolebadge">Co-Founder &amp; Director</span>
           </div>
@@ -2086,7 +2086,7 @@
               <a href="mailto:vithikagoel01@gmail.com" class="pci"><span
                   class="pci-ic">✉</span>vithikagoel01@gmail.com</a>
             </div>
-            <a href="New folder (2)/update portfolio.html" target="_blank" rel="noopener" class="pc-cta">View
+            <a href="/update-portfolio" target="_blank" rel="noopener" class="pc-cta">View
               Portfolio →</a>
           </div>
         </div>
@@ -2183,7 +2183,7 @@
       <div class="ft">
         <div class="fb2">
           <div class="fl">
-            <img src="vizolan tplt.png" alt="Vizolane Technologies Logo" class="fl-img" loading="lazy" />
+            <img src="/static/images/vizolan_tplt.png" alt="Vizolane Technologies Logo" class="fl-img" loading="lazy" />
           </div>
           <p>AI-powered urban infrastructure systems for smarter, faster, and safer cities across India and beyond.</p>
           <div class="fsocs">
@@ -2269,9 +2269,7 @@
     });
 
     /* Contact form — posts to backend API */
-    const API_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-      ? "http://localhost:3000/api/contact"
-      : "/api/contact"; /* Update this to your deployed backend URL */
+    const API_URL = "/api/contact";
     const ff = document.getElementById("ff"), fst = document.getElementById("fst");
     if (ff) {
       ff.addEventListener("submit", async e => {

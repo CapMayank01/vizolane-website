@@ -1,8 +1,3 @@
-bash
-
-PHOTO_B64=$(cat /home/claude/photo_b64.txt)
-
-cat > /mnt/user-data/outputs/vithika-goel-portfolio.html << HTMLEOF
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -358,7 +353,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:36px 0}
       <div class="hero-photo-wrap fade-up" style="transition-delay:.15s">
         <div class="photo-outer">
           <div class="photo-inner">
-            <img src="vithika.jpg" alt="Vithika Goel"style="width:280px; height:280px; border-radius:50%; object-fit:cover;display:block;">
+            <img src="/static/images/vithika.jpg" alt="Vithika Goel"style="width:280px; height:280px; border-radius:50%; object-fit:cover;display:block;">
           </div>
         </div>
         
@@ -933,6 +928,3 @@ document.getElementById('submitBtn').addEventListener('click',function(e){
 </script>
 </body>
 </html>
-HTMLEOF
-echo "Done: $(wc -c < /mnt/user-data/outputs/vithika-goel-portfolio.html) bytes"
-Done
