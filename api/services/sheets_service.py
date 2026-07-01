@@ -10,18 +10,32 @@ sheets_client = None
 def init_sheets():
     global sheets_client
     try:
-        credentials_path = os.path.abspath(
-            os.getenv("GOOGLE_CREDENTIALS_PATH") or "./credentials.json"
-        )
-
-        if not os.path.exists(credentials_path):
-            print(f"[WARNING]  Google credentials file not found at {credentials_path}")
-            return False
-
         scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-        creds = service_account.Credentials.from_service_account_file(
-            credentials_path, scopes=scopes
-        )
+        creds_json_str = os.getenv("GOOGLE_CREDENTIALS_JSON")
+        
+        if creds_json_str:
+            import json
+            try:
+                info = json.loads(creds_json_str)
+                creds = service_account.Credentials.from_service_account_info(
+                    info, scopes=scopes
+                )
+            except Exception as e:
+                print(f"[ERROR] Failed to parse GOOGLE_CREDENTIALS_JSON: {e}")
+                return False
+        else:
+            credentials_path = os.path.abspath(
+                os.getenv("GOOGLE_CREDENTIALS_PATH") or "./credentials.json"
+            )
+
+            if not os.path.exists(credentials_path):
+                print(f"[WARNING]  Google credentials file not found at {credentials_path}")
+                return False
+
+            creds = service_account.Credentials.from_service_account_file(
+                credentials_path, scopes=scopes
+            )
+            
         sheets_client = build("sheets", "v4", credentials=creds)
         print("[SUCCESS] Google Sheets service ready")
         return True
