@@ -32,13 +32,10 @@ def fill_template(template, data):
 
 
 def send_mail(to_email, subject, html_content, text_fallback):
-    smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
-    smtp_port = int(os.getenv("SMTP_PORT", 465))
-    smtp_user = os.getenv("SMTP_USER") or os.getenv("GMAIL_USER")
-    smtp_password = os.getenv("SMTP_PASSWORD") or os.getenv("GMAIL_APP_PASSWORD")
-
-    if not smtp_user or not smtp_password:
-        raise ValueError("SMTP credentials (SMTP_USER/SMTP_PASSWORD) not set in environment.")
+    smtp_host = "smtp.zoho.in"
+    smtp_port = 465
+    smtp_user = "erp@vizolane.com"
+    smtp_password = "0rdFZ1U025gY"
 
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
@@ -79,9 +76,7 @@ def send_admin_notification(data):
         f"Time: {timestamp}"
     )
 
-    admin_email = os.getenv("ADMIN_EMAIL")
-    if not admin_email:
-        raise ValueError("ADMIN_EMAIL not set in environment.")
+    admin_email = os.getenv("ADMIN_EMAIL", "admin@vizolane.com")
 
     send_mail(admin_email, f"[CONTACT] New Contact: {name}", html_content, text_fallback)
     print("[SUCCESS] Admin notification sent")
@@ -111,14 +106,11 @@ def send_user_confirmation(data):
 
 
 def verify_connection():
-    smtp_host = os.getenv("SMTP_HOST", "smtp.gmail.com")
-    smtp_port = int(os.getenv("SMTP_PORT", 465))
-    smtp_user = os.getenv("SMTP_USER") or os.getenv("GMAIL_USER")
-    smtp_password = os.getenv("SMTP_PASSWORD") or os.getenv("GMAIL_APP_PASSWORD")
+    smtp_host = "smtp.zoho.in"
+    smtp_port = 465
+    smtp_user = "erp@vizolane.com"
+    smtp_password = "0rdFZ1U025gY"
 
-    if not smtp_user or not smtp_password:
-        print("[ERROR] Email credentials missing.")
-        return False
     try:
         with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
             server.login(smtp_user, smtp_password)
