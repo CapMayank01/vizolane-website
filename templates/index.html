@@ -109,6 +109,16 @@
       z-index: 9999
     }
 
+    .mouse-glow {
+      position: fixed;
+      width: 500px; height: 500px;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, .06) 0%, rgba(56, 189, 248, .02) 50%, transparent 70%);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
     /* ── UTILS ────────────────────────────────── */
     .wrap {
       max-width: var(--w);
@@ -2245,6 +2255,23 @@
     const rvs = document.querySelectorAll(".rv");
     const rvo = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("on"); rvo.unobserve(e.target) } }) }, { threshold: .1 });
     rvs.forEach(e => rvo.observe(e));
+
+    /* Mouse Glow Interaction */
+    (function initMouseGlow() {
+      const glow = document.createElement('div');
+      glow.className = 'mouse-glow';
+      document.body.appendChild(glow);
+      let mx = 0, my = 0, cx = 0, cy = 0;
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+      function tick() {
+        cx += (mx - cx) * 0.08;
+        cy += (my - cy) * 0.08;
+        glow.style.left = cx + 'px';
+        glow.style.top  = cy + 'px';
+        requestAnimationFrame(tick);
+      }
+      tick();
+    })();
 
     /* Counter */
     function count(el) {

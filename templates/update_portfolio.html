@@ -21,6 +21,15 @@
   --fd:'Sora',sans-serif;--fb:'Inter',sans-serif;
   --nav-h:66px;--ease:cubic-bezier(0.16,1,0.3,1);
 }
+.mouse-glow {
+  position: fixed;
+  width: 480px; height: 480px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,127,255,.05) 0%, rgba(34,211,176,.02) 50%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
 [data-theme="light"]{
   --bg:#f8f8fc;--bg-2:#f0f0f7;--bg-3:#e8e8f2;--bg-glass:rgba(248,248,252,0.85);
   --border:rgba(0,0,0,0.07);--border-2:rgba(0,0,0,0.13);
@@ -897,6 +906,22 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:36px 0}
 </footer>
 
 <script>
+(function initMouseGlow() {
+  const glow = document.createElement('div');
+  glow.className = 'mouse-glow';
+  document.body.appendChild(glow);
+  let mx = 0, my = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function tick() {
+    cx += (mx - cx) * 0.08;
+    cy += (my - cy) * 0.08;
+    glow.style.left = cx + 'px';
+    glow.style.top  = cy + 'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
 function toggleTheme(){
   var h=document.documentElement,b=document.getElementById('themeBtn');
   if(h.dataset.theme==='dark'){h.dataset.theme='light';b.textContent='\u2600 Light'}
